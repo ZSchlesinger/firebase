@@ -1,5 +1,6 @@
 package com.example.zachschlesinger.firebasepractice;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -140,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
                             Log.w("firebase", "signInWithEmail", task.getException());
                             Toast.makeText(getBaseContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                        } else if (task.isSuccessful()) {
+                            Intent logged = new Intent(getBaseContext(), WelcomeActivity.class);
+                            startActivity(logged);
                         }
                     }
                 });
